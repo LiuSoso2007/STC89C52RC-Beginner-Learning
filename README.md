@@ -1,37 +1,21 @@
-# STC89C52RC 入门学习
+# 2-1 点亮 LED
 
-这是我的 STC89C52RC（8051 内核）入门练习仓库，记录从 LED、数码管、定时器到矩阵键盘和串口通信的基础实验。
+本实验通过 STC89C52RC 的 P1 口控制 8 个 LED，适合熟悉 `sbit` 定义和 GPIO 输出。
 
-为便于按课程独立查看，每个实验放在单独的 Git 分支中；`main` 分支只提供索引。
+## 实验现象
 
-## 实验目录
+程序将 P1.0～P1.7 全部输出低电平。在常见的低电平点亮开发板上，8 个 LED 会同时点亮。
 
-| 序号 | 实验内容 | 分支 |
-| --- | --- | --- |
-| 2-1 | 点亮 LED | [`lesson-2-1-led-on`](../../tree/lesson-2-1-led-on) |
-| 2-2 | LED 闪烁 | [`lesson-2-2-led-flash`](../../tree/lesson-2-2-led-flash) |
-| 2-3 | 流水灯 | [`lesson-2-3-running-led`](../../tree/lesson-2-3-running-led) |
-| 2-4 | 数码管静态显示 | [`lesson-2-4-seven-segment-static`](../../tree/lesson-2-4-seven-segment-static) |
-| 2-5 | 封装数码管显示函数 | [`lesson-2-5-seven-segment-function`](../../tree/lesson-2-5-seven-segment-function) |
-| 2-6 | 定时器秒表 | [`lesson-2-6-timer-stopwatch`](../../tree/lesson-2-6-timer-stopwatch) |
-| 2-7 | 矩阵键盘 | [`lesson-2-7-matrix-keypad`](../../tree/lesson-2-7-matrix-keypad) |
-| 2-8 | 软件 PWM 呼吸灯 | [`lesson-2-8-pwm-breathing-led`](../../tree/lesson-2-8-pwm-breathing-led) |
-| 2-9 | 串口控制 LED | [`lesson-2-9-uart-led-control`](../../tree/lesson-2-9-uart-led-control) |
+## 主要文件
 
-## 开发环境
+- `2-1点亮一个led/main.c`：GPIO 控制源码
+- `2-1点亮一个led/project led.uvproj`：Keil 工程
+- `2-1点亮一个led/Objects/led_on.hex`：可烧录固件
 
-- MCU：STC89C52RC 或兼容 8051 单片机
-- IDE：Keil μVision 5
-- 编译器：Keil C51
-- 晶振：工程配置为 24 MHz
+## 编译
 
-9 个工程均已使用 Keil C51 完整重编译，结果为 `0 Error(s), 0 Warning(s)`。各实验的引脚连接和现象说明见对应分支 README。
+使用 Keil μVision 打开 `.uvproj` 文件并执行 Rebuild。该工程已通过 Keil C51 完整重编译，结果为 `0 Error(s), 0 Warning(s)`。
 
-## 使用方法
+> LED 的有效电平取决于开发板电路，若现象相反，请先核对原理图。
 
-1. 切换到需要学习的实验分支。
-2. 使用 Keil μVision 打开该分支中的 `.uvproj` 工程。
-3. 执行 Rebuild，生成的固件位于 `Objects` 目录。
-4. 使用 STC-ISP 将 `.hex` 文件下载到单片机。
-
-> 这些代码用于入门学习。不同开发板的 LED、数码管和按键电平可能不同，烧录前请核对原理图。
+[返回课程索引](../../tree/main)
