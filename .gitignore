@@ -1,0 +1,17 @@
+# Keil 用户界面状态
+*.uvgui.*
+
+# Keil 中间文件
+*.obj
+*.OBJ
+*.__i
+*.lst
+*.m51
+*.lnp
+*.build_log.htm
+*.BAT
+
+# 只保留可直接烧录的 HEX
+Objects/*
+!Objects/*.hex
+Listings/
