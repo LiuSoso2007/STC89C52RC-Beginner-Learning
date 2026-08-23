@@ -1,37 +1,21 @@
-# STC89C52RC 入门学习
+# 2-8 软件 PWM 呼吸灯
 
-这是我的 STC89C52RC（8051 内核）入门练习仓库，记录从 LED、数码管、定时器到矩阵键盘和串口通信的基础实验。
+本实验使用纯软件 PWM 同时控制 P1.0～P1.7，通过逐步改变高、低电平保持时间实现 LED 渐亮和渐暗。
 
-为便于按课程独立查看，每个实验放在单独的 Git 分支中；`main` 分支只提供索引。
+## 学习内容
 
-## 实验目录
+- PWM 占空比的基本概念
+- 使用嵌套循环生成软件 PWM
+- 通过递增、递减占空比形成呼吸效果
 
-| 序号 | 实验内容 | 分支 |
-| --- | --- | --- |
-| 2-1 | 点亮 LED | [`lesson-2-1-led-on`](../../tree/lesson-2-1-led-on) |
-| 2-2 | LED 闪烁 | [`lesson-2-2-led-flash`](../../tree/lesson-2-2-led-flash) |
-| 2-3 | 流水灯 | [`lesson-2-3-running-led`](../../tree/lesson-2-3-running-led) |
-| 2-4 | 数码管静态显示 | [`lesson-2-4-seven-segment-static`](../../tree/lesson-2-4-seven-segment-static) |
-| 2-5 | 封装数码管显示函数 | [`lesson-2-5-seven-segment-function`](../../tree/lesson-2-5-seven-segment-function) |
-| 2-6 | 定时器秒表 | [`lesson-2-6-timer-stopwatch`](../../tree/lesson-2-6-timer-stopwatch) |
-| 2-7 | 矩阵键盘 | [`lesson-2-7-matrix-keypad`](../../tree/lesson-2-7-matrix-keypad) |
-| 2-8 | 软件 PWM 呼吸灯 | [`lesson-2-8-pwm-breathing-led`](../../tree/lesson-2-8-pwm-breathing-led) |
-| 2-9 | 串口控制 LED | [`lesson-2-9-uart-led-control`](../../tree/lesson-2-9-uart-led-control) |
+## 主要文件
 
-## 开发环境
+- `2-8PWM呼吸灯-纯软件方式/pwmled.c`：软件 PWM 源码
+- `2-8PWM呼吸灯-纯软件方式/pwmled.uvproj`：Keil 工程
+- `2-8PWM呼吸灯-纯软件方式/Objects/pwmled.hex`：可烧录固件
 
-- MCU：STC89C52RC 或兼容 8051 单片机
-- IDE：Keil μVision 5
-- 编译器：Keil C51
-- 晶振：工程配置为 24 MHz
+工程已通过 Keil C51 完整重编译，结果为 `0 Error(s), 0 Warning(s)`。
 
-9 个工程均已使用 Keil C51 完整重编译，结果为 `0 Error(s), 0 Warning(s)`。各实验的引脚连接和现象说明见对应分支 README。
+> 软件 PWM 会占用 CPU，适合作为原理练习；需要同时处理其他任务时可改用定时器中断或硬件 PWM。
 
-## 使用方法
-
-1. 切换到需要学习的实验分支。
-2. 使用 Keil μVision 打开该分支中的 `.uvproj` 工程。
-3. 执行 Rebuild，生成的固件位于 `Objects` 目录。
-4. 使用 STC-ISP 将 `.hex` 文件下载到单片机。
-
-> 这些代码用于入门学习。不同开发板的 LED、数码管和按键电平可能不同，烧录前请核对原理图。
+[返回课程索引](../../tree/main)
